@@ -55,21 +55,24 @@
           </span>
         </router-link>
       </v-toolbar-title>
-      <v-app-bar-nav-icon class="logo-size" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="logo-size-d" @click="drawer = !drawer"></v-app-bar-nav-icon>
       
 
       <v-spacer></v-spacer>
-      
-      
-      <v-toolbar-items v-if="btnShow">
-        <v-btn flat color="blue lighten-4">
+    
+      <!-- <v-toolbar-items>
+        <v-btn 
+
+        flat 
+        color="blue lighten-4">
           <v-icon left>bug_report</v-icon>
           Link One
         </v-btn>
+         </template>
         <v-btn flat color="blue lighten-3">Link One</v-btn>
         <v-btn flat color="blue lighten-2">Link One</v-btn>
         <v-btn flat color="blue lighten-1">Link One</v-btn>
-      </v-toolbar-items> 
+      
       <v-toolbar-items class="hidden-sm-and-down">
        <v-btn
           v-for="link in links"
@@ -92,11 +95,114 @@
           Logout
         </v-btn> 
 
-      </v-toolbar-items>
+      </v-toolbar-items> -->
+<v-toolbar-items>
 
-      <v-btn icon>
+ <!-- <v-btn
+           
+          @click="logout"
+          to="/login"
+          text
+          color="blue lighten-4"
+        >
+          <v-icon left>logout</v-icon>
+          Logout
+        </v-btn>  -->
+<v-btn icon text>
+  <v-badge
+        :content="messages"
+        :value="messages"
+        color="blue"
+        overlap
+        >
+    <v-icon>admin_panel_settings</v-icon></v-badge>
+</v-btn> 
+<v-btn icon text>
+  <v-badge
+        :content="messages"
+        :value="messages"
+        color="red"
+        overlap
+        >
+    <v-icon>email</v-icon></v-badge>
+</v-btn>        
+<v-btn icon text @click="messages=23, show=true">
+  <v-badge
+        :content="messages"
+        :value="messages"
+        color="green"
+        overlap
+        >
+    <v-icon>shopping_cart</v-icon></v-badge>
+</v-btn>
+<v-btn icon text @click="messages=0, show=false">
+  <v-badge
+        :content="messages"
+        :value="messages"
+        color="green"
+        overlap
+        >
+    <v-icon>mdi-heart</v-icon></v-badge>
+</v-btn>
+<v-btn icon text @click="messages=0">
+  <v-badge
+        :content="messages"
+        :value="messages"
+        color="green"
+        overlap
+        >
+    <v-icon>notifications</v-icon></v-badge>
+</v-btn>
+ </v-toolbar-items>
+
+
+
+<div class="text-center">
+    <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+          <v-list-item 
+          two-line
+          v-bind="attrs"
+          v-on="on"
+          >
+          
+     <v-list-item-avatar> 
+            <img src="https://randomuser.me/api/portraits/women/81.jpg">
+        </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title><v-badge
+        :content="messages"
+        :value="messages"
+        color="green"
+        >Jane Smith</v-badge></v-list-item-title>
+            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+      
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </div>
+  
+
+ 
+
+
+    
+
+
+
+      <!-- <v-btn icon>
         <v-icon>mdi-export</v-icon>
-      </v-btn>
+        Logout
+      </v-btn> -->
     </v-app-bar>
 
   <!-- Sizes your content based upon application components -->
@@ -178,13 +284,19 @@ export default  {
           { title: 'My Account', icon: 'mdi-account' },
           { title: 'Users', icon: 'mdi-account-group-outline' },
         ],
-      } 
+      messages: 0,
+      show: false,
+      }
+       
     },
     computed:{
         error () {
             return this.$store.getters.error
 
         }
+
+    },
+    methods: {
 
     },
     mounted() {
@@ -232,7 +344,7 @@ export default  {
   
   height: 3rem;
   width: auto;
-  margin: 5px 30px 5px 10px;
+  margin: 15px 30px 5px 10px;
   
 }
 .logo-space{
