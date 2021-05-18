@@ -15,19 +15,20 @@ const routes = [
     name: 'homePage',
     meta:{layout: 'blank'},
     component: () => import('../views/HomePage.vue'),
-    // beforeEnter: AuthRouterService
+    beforeEnter: AuthRouterService
   },
   {
     path: '/login',
     name: 'login',
-    meta:{layout: 'empty'},
+    meta:{layout: 'blank'},
     component: () => import('../views/Login.vue')
+    // component: () => import('../views/auth/Login.vue')
   },  
   {
     path: '/registration',
     name: 'registration',
-    meta:{layout: 'empty'},
-    component: () => import('../views/Register.vue')
+    meta:{layout: 'blank'},
+    component: () => import('../views/auth/Registration.vue')
   },
   {
     path: '/catigories',

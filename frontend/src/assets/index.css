@@ -1,3 +1,5 @@
+ /* https://material.io/resources/icons/?icon=3d_rotation&style=baseline  */
+/* ICONS link */
 .empty-layout {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -187,3 +189,44 @@
   background: linear-gradient(45deg, rgb(31, 72, 185), rgb(9, 255, 0));
 }
 
+.pointer {
+  cursor: pointer;
+  color: white;
+  padding: 0 20px;
+}
+.pointer-f {
+  cursor: pointer;
+  color: white;
+  padding: 0 20px;
+}
+.wight-class{
+   color: white; 
+   padding: 0 10px;
+   }
+.logo-size{
+  
+  height: 3rem;
+  width: auto;
+  margin: 15px 30px 5px 10px;
+  
+}
+.logo-space{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* html { overflow-y: auto } */
+/* html {
+  overflow-y: hidden !important;
+} */
+/* html {
+  overflow: hidden !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
