@@ -12,6 +12,12 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'main',
+    meta:{layout: 'blank-auth'},
+    component: () => import('../views/Main.vue'),
+  },
+  {
+    path: '/home',
     name: 'homePage',
     meta:{layout: 'blank'},
     component: () => import('../views/HomePage.vue'),
@@ -20,7 +26,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    meta:{layout: 'blank'},
+    meta:{layout: 'blank-auth'},
     // component: () => import('../views/Login.vue')
     component: () => import('../views/auth/Login.vue')
   }, 
@@ -33,7 +39,7 @@ const routes = [
   {
     path: '/registration',
     name: 'registration',
-    meta:{layout: 'blank'},
+    meta:{layout: 'blank-auth'},
     component: () => import('../views/auth/Registration.vue')
   },
   {
@@ -67,13 +73,13 @@ const routes = [
     component: () => import('../views/Planning.vue'),
     beforeEnter: AuthRouterService
   },
-  {
-    path: '/',
-    name: 'home',
-    meta:{layout: 'main2'},
-    component: () => import('../views/HomePage.vue'),
-    beforeEnter: AuthRouterService
-  },
+  // {
+  //   path: '/home',
+  //   name: 'home',
+  //   meta:{layout: 'main2'},
+  //   component: () => import('../views/HomePage.vue'),
+  //   beforeEnter: AuthRouterService
+  // },
   {
     path: '/history',
     name: 'history',

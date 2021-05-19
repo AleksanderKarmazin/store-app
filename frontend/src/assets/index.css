@@ -216,6 +216,11 @@
   justify-content: center;
 }
 
+.v-application a {
+  text-decoration: none;
+}
+
+
 /* html { overflow-y: auto } */
 /* html {
   overflow-y: hidden !important;

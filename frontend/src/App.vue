@@ -11,6 +11,7 @@ import EmptyLayout from './layouts/EmptyLayout'
 import MainLayout from './layouts/MainLayout'
 import Blank from './layouts/Blank'
 import MainLayout2 from './layouts/MainLayout2'
+import BlankAuth from './layouts/BlankAuth.vue'
 
 
 
@@ -25,7 +26,8 @@ export default {
     EmptyLayout,
     'main2-layout': MainLayout2 , 
     MainLayout, 
-    'blank-layout': Blank
+    'blank-layout': Blank,
+    'blank-auth-layout': BlankAuth
     
   },
    async mounted() {
@@ -42,6 +44,6 @@ export default {
 }
 </script>
 <style>
-@import '~materialize-css/dist/css/materialize.min.css';
+/* @import '~materialize-css/dist/css/materialize.min.css'; */
 @import './assets/index.css';
 </style>

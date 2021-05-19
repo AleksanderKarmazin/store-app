@@ -25,7 +25,7 @@
       ></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-                <v-btn text v-if="user && admin">
+        <v-btn text v-if="user && admin">
           <v-badge :content="messages" :value="messages" color="blue" overlap>
             <v-icon x-large left>admin_panel_settings</v-icon></v-badge
           >
@@ -51,8 +51,43 @@
             <v-icon>notifications</v-icon></v-badge
           >
         </v-btn>
+        <v-list
+        v-if="!user"
+        style="background: none;
+        align-items: center;
+        display: flex;"
+
+        >
+            <v-list-item  to="/login">
+              <v-list-item-icon>
+            <v-icon>
+                login
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item-content>
+          </v-list-item>
+          </v-list>
+          <v-list
+          style="background: none;
+          align-items: center;
+          display: flex;"
+          v-if="!user"
+          >
+            <v-list-item  to="/registration">
+              <v-list-item-icon>
+            <v-icon>
+                how_to_reg
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Registration</v-list-item-title>
+          </v-list-item-content>
+            </v-list-item>
+        </v-list>
       </v-toolbar-items>
-      <div class="text-center">
+      <div class="text-center" v-if="user">
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-list-item two-line v-bind="attrs" v-on="on">
@@ -102,7 +137,7 @@ import messages from "../utils/messages";
 
 export default {
   components: { NavDrawer, Footer },
-  name: "blank-layout",
+  name: "blank-auth-layout",
   data() {
     return {
       drawer: false,

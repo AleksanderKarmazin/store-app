@@ -5,18 +5,17 @@
       sm="5"
     >
     <v-card>
-      <v-card-title class="cyan darken-1">
-        <span class="headline white--text">Sarah Mcbeal</span>
+      <v-card-title class="blue">
+        <span class="headline white--text">Welcome back</span>
           <v-spacer></v-spacer>
             </v-card-title>
             <v-card-text class="pt-4">
-              <v-form v-model="valid" ref="form">
+              <v-form v-model="valid" ref="form" lazy-validation>
                 <v-text-field
                   prepend-icon="person"
                   label="Enter your e-mail address"
                   v-model="email"
-                  type="Email"
-                  :rules="emailRules"
+                  type="Email" 
                   required
                 ></v-text-field>
                 <v-text-field
@@ -35,14 +34,20 @@
                 ></v-text-field>
                 <v-layout justify-space-between>
                   <v-btn
+                    :loading="loading"
                     @click="onSubmit"
-                    :class="{
+                    :class="{ 
                       'blue darken-4 white--text': valid,
-                      disabled: !valid,
+                      disabled: !valid || loading,
                     }"
                     >Login</v-btn
                   >
-                  <a href="">Forgot Password</a>
+                  <p class="center">
+                    Not registered yet?
+                    <v-btn color="success" class="white--text" to="/registration">
+                      Registration
+                    </v-btn>
+                  </p>
                 </v-layout>
               </v-form>
               </v-card-text>
@@ -62,12 +67,14 @@ export default {
       valid: false,
       e1: false,
       passwordRules: [
-        
         (v) => !!v || "Password is required",
-        v => (v && v.length >=6) || "Password must be equals or more than 6 characters",
-        v => (v && v.length <=8) || "Password must not be equals or more than 9 characters"
-        
-        ],
+        (v) =>
+          (v && v.length >= 6) ||
+          "Password must be equals or more than 6 characters",
+        (v) =>
+          (v && v.length <= 8) ||
+          "Password must not be equals or more than 9 characters",
+      ],
       emailRules: [
         (v) => !!v || "E-mail is required",
         (v) =>
@@ -93,7 +100,7 @@ export default {
         };
         this.$store.dispatch('loginUser', user)
         .then(()=>{
-          this.$router.push('/')
+          this.$router.push('/home')
         })
         .catch(() => {
           

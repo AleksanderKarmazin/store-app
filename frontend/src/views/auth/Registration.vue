@@ -5,8 +5,8 @@
       sm="5"
     >
     <v-card>
-      <v-card-title class="cyan darken-1">
-        <span class="headline white--text">Sarah Mcbeal</span>
+      <v-card-title class="blue">
+        <span class="headline white--text">Registration</span>
           <v-spacer></v-spacer>
             </v-card-title>
               <v-card-text class="pt-4">
@@ -63,13 +63,15 @@
                     }"
                     >Create account</v-btn
                   >
-                  <a href="">Forgot Password</a>
+                  <p class="center">
+                    Already have account?
+                    <v-btn color="success" class="white--text" to="/login">
+                      login
+                    </v-btn>
+                  </p>
                 </v-layout>
               </v-form>
           </v-card-text>
-      <!-- </v-flex>
-    </v-layout>
-  </v-container> -->
         </v-card>
     </v-col>
   </v-row>
@@ -130,7 +132,7 @@ export default {
 
         this.$store.dispatch('registerUser', user)
         .then(()=>{
-          this.$router.push('/')
+          this.$router.push('/home')
         })
         .catch(() => {
 
