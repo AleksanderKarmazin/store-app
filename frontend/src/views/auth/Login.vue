@@ -1,16 +1,15 @@
 <template>
-<div>
-  <!-- <v-container fluid fill-height> -->
-    <!-- <v-layout flex align-center justify-center>
-      <v-flex xs12 sm4 elevation-6>
-        <v-toolbar class="pt-5 blue darken-4" style="height: 84px;">
-          <v-toolbar-title class="white--text"
-            ><h4>Welcome Back</h4></v-toolbar-title
-          > 
-        </v-toolbar> -->
-        <v-card>
-          <v-card-text class="pt-4">
-            <div>
+  <v-row justify="center">
+    <v-col
+      cols="12"
+      sm="5"
+    >
+    <v-card>
+      <v-card-title class="cyan darken-1">
+        <span class="headline white--text">Sarah Mcbeal</span>
+          <v-spacer></v-spacer>
+            </v-card-title>
+            <v-card-text class="pt-4">
               <v-form v-model="valid" ref="form">
                 <v-text-field
                   prepend-icon="person"
@@ -46,13 +45,10 @@
                   <a href="">Forgot Password</a>
                 </v-layout>
               </v-form>
-            </div>
-          </v-card-text>
+              </v-card-text>
         </v-card>
-      <!-- </v-flex>
-    </v-layout> -->
-  <!-- </v-container> -->
-  </div>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -95,17 +91,10 @@ export default {
           email: this.email,
           password: this.password,
         };
-        // this.$store
-        //   .dispatch('loginUser', user)
-
-        
         this.$store.dispatch('loginUser', user)
         .then(()=>{
           this.$router.push('/')
-          // localStorage.removeItem('user')
-          // document.location.reload();
         })
-        // .catch(err=> console.log(err))
         .catch(() => {
           
         })

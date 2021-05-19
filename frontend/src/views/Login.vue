@@ -1,5 +1,39 @@
-<template> <div>
-  <form class="card auth-card" @submit.prevent="onSubmit">
+<template> 
+<v-row justify="center">
+    <v-col
+      cols="12"
+      sm="8"
+    >
+      <v-card>
+        <v-card-title class="cyan darken-1">
+          <span class="headline white--text">Sarah Mcbeal</span>
+
+          <v-spacer></v-spacer>
+
+          <v-btn
+            dark
+            icon
+          >
+            <v-icon>mdi-chevron-left</v-icon>
+          </v-btn>
+
+          <v-btn
+            dark
+            icon
+          >
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+
+          <v-btn
+            dark
+            icon
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </v-card-title>
+<!-- <div> -->
+    <!-- <form class="card auth-card" @submit.prevent="onSubmit"> -->
+  <form @submit.prevent="onSubmit">
   
   <div class="card-content">
     <span class="card-title">Домашняя бухгалтерия</span>
@@ -73,7 +107,11 @@
       <router-link to="/registration">Зарегистрироваться</router-link>
     </p>
     </div><FlashMessage></FlashMessage>
-    </form></div>
+    </form>
+    <!-- </div> -->                    
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -85,7 +123,10 @@ export default {
   name:"login",
   data: ()=>({
     email:'',
-    password:''
+    password:'',
+    dialog: true,
+    tab: 0,
+
   }),
   validations:{
     email:{email, required},
