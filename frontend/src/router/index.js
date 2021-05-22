@@ -17,6 +17,25 @@ const routes = [
     component: () => import('../views/Main.vue'),
   },
   {
+    path: '/farmer',
+    name: 'farmer',
+    meta:{layout: 'blank-auth'},
+    component: () => import('../views/public/farmer/Farmer.vue'),
+  },
+  {
+    path: '/consumer',
+    name: 'consumer',
+    meta:{layout: 'blank-auth'},
+    component: () => import('../views/public/Consumer.vue'),
+  },
+  {
+    path: '/supplier',
+    name: 'suppliers',
+    meta:{layout: 'blank'},
+    component: () => import('../views/Supplier.vue'),
+    beforeEnter: AuthRouterService
+  },
+  {
     path: '/home',
     name: 'homePage',
     meta:{layout: 'blank'},

@@ -1,17 +1,40 @@
 <template>
     <v-footer 
-
+    style="padding: 0;"
     absolute 
     app 
     height="auto" 
     width="auto" 
-    class="py-3"
+    class="py-0"
   >
-    <v-row
+    <v-card 
+      class="flex"
+      flat
+      tile
+    >
+      <v-card-title class="teal maincolor7">
+        <strong class="subheading">Get connected with us on social networks!</strong>
+
+        <v-spacer></v-spacer>
+
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4 maincolor3"
+          dark
+          icon
+        >
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-card-title>
+    
+      <v-row
       justify="center"
       no-gutter
       class="maincolor"
-    >
+    > 
       <v-btn
         v-for="(link, index) in footerLinks"
         :key="index"
@@ -39,8 +62,8 @@
          </span>
           </p>
       </v-col> 
-      
     </v-row>
+    </v-card>
   </v-footer>
 </template>
 
@@ -59,6 +82,12 @@ export default {
             ],
         timeShow:true,
         date: new Date(),
+        icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
         }
     },
 

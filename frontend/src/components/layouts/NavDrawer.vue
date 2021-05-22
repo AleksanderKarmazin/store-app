@@ -7,13 +7,13 @@
         >
       
         <v-list-item two-line>
-          <v-list-item-avatar>
+          <!-- <v-list-item-avatar>
             <img src="https://randomuser.me/api/portraits/women/81.jpg">
-          </v-list-item-avatar>
+          </v-list-item-avatar> -->
 
           <v-list-item-content>
-            <v-list-item-title>Jane Smith</v-list-item-title>
-            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+            <v-list-item-title>CATALOG</v-list-item-title>
+            <v-list-item-subtitle>Develop your business with us</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
             <v-divider></v-divider>
@@ -21,6 +21,7 @@
                 <v-list-item
                 v-for="item in items"
                 :key="item.title"
+                :to="item.link"
                 >
                 <v-list-item-icon>
                     <v-icon>{{ item.icon }}</v-icon>
@@ -40,7 +41,7 @@ export default {
     props: ["items", "drawer"],
     data() {
         return {
-            // drawer: false,
+
         }
     },
 }

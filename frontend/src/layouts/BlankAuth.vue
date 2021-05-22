@@ -2,9 +2,10 @@
   <v-app>
     <NavDrawer :items="items" :drawer="drawer"></NavDrawer>
     <v-app-bar 
-    absolute 
+    fixed
     inset 
     app 
+    height=90
     class="maincolor2"
     >
       <v-toolbar-title class="logo-space">
@@ -23,6 +24,9 @@
         class="logo-size-d"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
+      <v-btn text color="rgba(0,0,0,0)" x-large to="/farmer" class="white--text"> <h4>Farmer</h4> </v-btn>
+      <v-btn text color="rgba(0,0,0,0)" x-large to="/consumer" class="white--text"> <h4>Consumer</h4> </v-btn>
+      <v-btn text color="rgba(0,0,0,0)" x-large to="/supplier" class="white--text"> <h4>Supplier</h4> </v-btn>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text v-if="user && admin">
@@ -91,13 +95,16 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-list-item two-line v-bind="attrs" v-on="on">
-              <v-list-item-avatar>
-                <img src="https://randomuser.me/api/portraits/women/81.jpg" />
+              <v-list-item-avatar
+               size="70"
+              >
+                <img src="http://localhost:5000/uploads\image-1621673470158.jpg" />
+                <!-- <img src="https://randomuser.me/api/portraits/women/81.jpg" /> -->
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title
                   ><v-badge :content="messages" :value="messages" color="green"
-                    >Jane Smith</v-badge
+                    > <h2>{{userName}}</h2> </v-badge
                   ></v-list-item-title
                 >
                 <v-list-item-subtitle>Logged In</v-list-item-subtitle>
@@ -116,7 +123,7 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid fill-height>
+      <v-container fluid fill-height class="ma-0 pa-0">
         
             <!-- If using vue-router -->
             <router-view></router-view>
@@ -142,9 +149,18 @@ export default {
     return {
       drawer: false,
       items: [
-        { title: "Home", icon: "mdi-home-city" },
-        { title: "My Account", icon: "mdi-account" },
-        { title: "Users", icon: "mdi-account-group-outline" },
+          { title: "Home", icon: "mdi-home-city", link:'/' },
+          { title: "My Account", icon: "mdi-account", link:'/1'  },
+          { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
+          { title: "Farmer", icon: "mdi-home-city", link:'/farmer' },
+          { title: "Consumer", icon: "mdi-account", link:'/consumer'  },
+          { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
+          { title: "Home", icon: "mdi-home-city", link:'/1' },
+          { title: "My Account", icon: "mdi-account", link:'/1'  },
+          { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
+          { title: "Home", icon: "mdi-home-city", link:'/1' },
+          { title: "My Account", icon: "mdi-account", link:'/1'  },
+          { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
       ],
       messages: 0,
       show: false,
@@ -160,6 +176,10 @@ export default {
     admin() {
       console.log(this.$store.getters.user)
      return this.$store.getters.user.isAdmin;
+    },
+    userName() {
+      console.log(this.$store.getters.user)
+     return this.$store.getters.user.name;
     },
   },
   methods: {},

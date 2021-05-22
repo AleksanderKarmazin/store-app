@@ -188,6 +188,10 @@
 .maincolor6{
   background: linear-gradient(45deg, rgb(31, 72, 185), rgb(9, 255, 0));
 }
+.maincolor7{
+  background: linear-gradient(45deg, rgb(185, 31, 139), rgb(255, 153, 0));
+  color: linear-gradient(45deg, rgb(185, 31, 139), rgb(255, 153, 0));
+}
 
 .pointer {
   cursor: pointer;
