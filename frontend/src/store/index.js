@@ -12,6 +12,7 @@ import theme from './theme.module'
 import catigories from './catigories.module'
 import account from './account.module'
 import record from './record.module'
+import consumer from './consumer.module'
 
 
 Vue.use(Vuex)
@@ -37,6 +38,7 @@ export default new Vuex.Store({
     theme,
     catigories,
     account,
-    record
+    record,
+    consumer
   }
 })

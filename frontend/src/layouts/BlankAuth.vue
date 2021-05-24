@@ -98,13 +98,14 @@
               <v-list-item-avatar
                size="70"
               >
-                <img src="http://localhost:5000/uploads\image-1621673470158.jpg" />
+                <img :src="VUE_BASE_URL + userFull.image" />
                 <!-- <img src="https://randomuser.me/api/portraits/women/81.jpg" /> -->
               </v-list-item-avatar>
               <v-list-item-content>
+                
                 <v-list-item-title
                   ><v-badge :content="messages" :value="messages" color="green"
-                    > <h2>{{userName}}</h2> </v-badge
+                    > <h2>{{userFull.name}}</h2> </v-badge
                   ></v-list-item-title
                 >
                 <v-list-item-subtitle>Logged In</v-list-item-subtitle>
@@ -147,6 +148,7 @@ export default {
   name: "blank-auth-layout",
   data() {
     return {
+      VUE_BASE_URL:'http://localhost:5000',
       drawer: false,
       items: [
           { title: "Home", icon: "mdi-home-city", link:'/' },
@@ -177,10 +179,10 @@ export default {
       console.log(this.$store.getters.user)
      return this.$store.getters.user.isAdmin;
     },
-    userName() {
+    userFull() {
       console.log(this.$store.getters.user)
-     return this.$store.getters.user.name;
-    },
+      return this.$store.getters.user;
+    }
   },
   methods: {},
   mounted() {},
@@ -197,7 +199,7 @@ export default {
           this.$error(this.$store.getters.user.name);
           break;
       }
-    },
+    }
   },
 };
 </script>

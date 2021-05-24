@@ -64,12 +64,12 @@
               size="70"
               >
                 <img 
-                src="http://localhost:5000/uploads\image-1621673470158.jpg" />
+                :src="VUE_BASE_URL + userFull.image" />
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title
                   ><v-badge :content="messages" :value="messages" color="green"
-                    ><h2>{{userName}}</h2></v-badge
+                    ><h2>{{userFull.name}}</h2></v-badge
                   ></v-list-item-title
                 >
                 <v-list-item-subtitle>Logged In</v-list-item-subtitle>
@@ -109,9 +109,14 @@ import messages from "../utils/messages";
 
 export default {
   components: { NavDrawer, Footer },
+  
+
+
+
   name: "blank-layout",
   data() {
-    return {
+    return { 
+      VUE_BASE_URL:'http://localhost:5000',
       drawer: false,
       items: [
           { title: "Home", icon: "mdi-home-city", link:'/' },
@@ -142,10 +147,14 @@ export default {
       console.log(this.$store.getters.user)
      return this.$store.getters.user.isAdmin;
     },
-    userName() {
+    userFull() {
+      console.log('1',process.env.VUE)
+      console.log('2',process.env.VUE_HTTP)
+      console.log('3',process.env.VUE_HOST)
       console.log(this.$store.getters.user)
-     return this.$store.getters.user.name;
+     return this.$store.getters.user;
     },
+
   },
   methods: {},
   mounted() {},

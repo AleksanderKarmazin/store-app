@@ -19,8 +19,8 @@
             <v-divider></v-divider>
             <v-list dense>
                 <v-list-item
-                v-for="item in items"
-                :key="item.title"
+                v-for="(item, idx) in items"
+                :key="idx"
                 :to="item.link"
                 >
                 <v-list-item-icon>

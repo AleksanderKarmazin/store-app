@@ -15,6 +15,8 @@ import BlankAuth from './layouts/BlankAuth.vue'
 
 
 
+
+
 export default {
   computed: {
     layout(){
@@ -31,7 +33,7 @@ export default {
     
   },
    async mounted() {
-    
+
     // this.$messages('TEST ')
     // this.$error('TEST ')
     // this.currency = await this.$store.dispatch('frtchCurrency')

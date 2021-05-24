@@ -19,7 +19,7 @@ const authUser = asyncHandler(async (req, res) => {
             isAdmin: user.isAdmin,
             cropSelection: user.cropSelection,
             token: generateToken(user._id),
-            countValue: user.countValue
+            image: user.image
         })
     } else {
         res.status(401)
@@ -59,7 +59,7 @@ const registerUser = asyncHandler(async (req, res) => {
             cropSelection: user.cropSelection,
             isAdmin: user.isAdmin,
             token: generateToken(user._id),
-            countValue: user.countValue
+            image: user.image
         })
     } else {
         res.status(400)
@@ -82,7 +82,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             email: user.email,
             cropSelection: user.cropSelection,
             isAdmin: user.isAdmin,
-            countValue: user.countValue
+            image: user.image
         })
     } else {
         res.status(401)
@@ -100,7 +100,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         user.name = req.body.name || user.name
         user.email = req.body.email || user.email
         user.cropSelection = req.body.cropSelection || user.cropSelection
-        user.countValue = req.body.countValue || user.countValue
+        user.image = req.body.image || user.image
         if (req.body.password) {
             user.password = req.body.password
         }
@@ -114,7 +114,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             isAdmin: updatedUser.isAdmin,
             cropSelection: updatedUser.cropSelection,
             token: generateToken(updatedUser._id),
-            countValue: updatedUser.countValue
+            image: updatedUser.image
         })
     } else {
         res.status(401)
@@ -169,7 +169,7 @@ const updateUser = asyncHandler(async (req, res) => {
         user.email = req.body.email || user.email
         user.cropSelection = req.body.cropSelection || user.cropSelection
         user.isAdmin = req.body.isAdmin
-        user.countValue = req.body.countValue
+        user.image  = req.body.image
 
         const updatedUser = await user.save()
 
@@ -179,7 +179,7 @@ const updateUser = asyncHandler(async (req, res) => {
             email: updatedUser.email,
             isAdmin: updatedUser.isAdmin,
             cropSelection: updatedUser.cropSelection,
-            countValue: updatedUser.countValue
+            image: updatedUser.image
         })
     } else {
         res.status(401)

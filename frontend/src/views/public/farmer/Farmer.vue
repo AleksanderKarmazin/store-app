@@ -1,10 +1,20 @@
 <template>
   <v-row class="main-cards-color ma-0">
-    <v-col v-for="(i, indx) in cardItems" :key="indx">
+     <v-row class="main-block  ma-5"
+      align="center"
+      justify="center"
+       ><h1> <strong>FARMER</strong> </h1></v-row>
+       <v-row
+       > <div class="text-center mx-15 px-15 py-7"> <h2>
+         If you are a farmer then you are at perfect platfrom from where you can order 
+         all of your farming related products and you can sell your production also.</h2>
+         </div>
+         </v-row>
+    <v-col v-for="(card, indx) in cardItems" :key="indx">
       <v-card class="mx-auto ma-3" max-width="400" min-height="200">
         <v-card-text >
           <p style="height: 20px " class="text-h5 text--primary text-center ma-8">
-            {{ i.title }}
+            {{ card.title }}
           </p>
           <v-container fluid>
             <v-layout justify-center align-center>
@@ -15,13 +25,13 @@
                   height="350"
                   max-height="450"
                   max-width="450"
-                  :src="i.src"
+                  :src="card.src"
                 ></v-img>
               </v-flex>
             </v-layout>
           </v-container>
           <div class="text--primary">
-            {{ i.desc }}
+            {{ card.desc }} {{ card.src}}
           </div>
         </v-card-text>
         <v-card-actions class="justify-center">
@@ -35,6 +45,7 @@
 </template>
 
 <script>
+// import moduleName from '../../../../public/heavy.svg'
 export default {
   data() {
     return {

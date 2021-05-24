@@ -23,11 +23,9 @@ const userSchema = mongoose.Schema({
         required: true,
         default: false
     },
-    countValue: {
-        type: Number,
-        required: false,
-        default: 0
-
+    image: {
+        type: String,
+        required: true
     },
 }, {
     timestamps: true
