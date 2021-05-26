@@ -35,7 +35,9 @@
           <div>Location: {{card.avalaible_location}}</div>
         </v-card-text>
         <v-card-actions class="justify-center">
-           <v-btn text x-large class="ma-5" color="deep-purple accent-4">
+           <v-btn text x-large class="ma-5" color="deep-purple accent-4" 
+           @click="$router.push('/product-card/' + card._id)"
+           >
             <h2>Preview here</h2>
           </v-btn>
         </v-card-actions>

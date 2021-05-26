@@ -1,9 +1,9 @@
 import {  
     getConsumer, 
-    
+    getConsumerById,
 } from '../services/consumer.service'
 import {  
-    getAccountById, 
+     
     deleteAccountById, 
     createAccount, 
     updateAccountById,
@@ -78,15 +78,15 @@ export default {
                 throw error;
             }
         }, 
-        async getAccountById({commit}, {_id}) {
+        async getConsumerById({commit}, {_id}) {
             try {
                 commit('clearError')
                 commit('clearInfo')
                 commit('setLoading', true)
-                const AccountById = await getAccountById({_id})
-                  console.log('Account by ID from request', AccountById);
-                  commit('setLoading', false)
-                return AccountById;
+                const ConsumerById = await getConsumerById({_id})
+                console.log('Consumer by ID from request', ConsumerById);
+                commit('setLoading', false)
+                return ConsumerById;
             } catch (error) {
                 commit('setError', error.response.data.message)
                 commit('setLoading', false)

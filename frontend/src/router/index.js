@@ -29,6 +29,12 @@ const routes = [
     component: () => import('../views/public/Consumer.vue'),
   },
   {
+    path: '/product-card/:id',
+    name: 'product-card',
+    meta:{layout: 'blank-auth'},
+    component: () => import('../views/ProductCard.vue'),
+  },
+  {
     path: '/supplier',
     name: 'suppliers',
     meta:{layout: 'blank'},
