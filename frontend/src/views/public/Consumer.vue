@@ -61,6 +61,9 @@ export default {
     const consumer = this.$store.getters.getConsumer;
     this.consumer = consumer;
     console.log("store", this.consumer);
+    // 
+    console.log("VUE_APP_BASE_URL", process.env.VUE_APP_BASE_URL);
+
   },
 };
 </script>

@@ -98,7 +98,10 @@
               <v-list-item-avatar
                size="70"
               >
-                <img :src="VUE_BASE_URL + userFull.image" />
+                <img :src="URL + userFull.image" />
+
+
+                
                 <!-- <img src="https://randomuser.me/api/portraits/women/81.jpg" /> -->
               </v-list-item-avatar>
               <v-list-item-content>
@@ -148,7 +151,7 @@ export default {
   name: "blank-auth-layout",
   data() {
     return {
-      VUE_BASE_URL:'http://localhost:5000',
+      URL:process.env.VUE_APP_BASE_URL,
       drawer: false,
       items: [
           { title: "Home", icon: "mdi-home-city", link:'/' },

@@ -64,7 +64,7 @@
               size="70"
               >
                 <img 
-                :src="VUE_BASE_URL + userFull.image" />
+                :src="URL + userFull.image" />
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title
@@ -116,12 +116,13 @@ export default {
   name: "blank-layout",
   data() {
     return { 
-      VUE_BASE_URL:'http://localhost:5000',
+      URL:process.env.VUE_APP_BASE_URL,
+      // VUE_BASE_URL:'http://localhost:5000',
       drawer: false,
       items: [
           { title: "Home", icon: "mdi-home-city", link:'/' },
           { title: "My Account", icon: "mdi-account", link:'/1'  },
-          { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
+          { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },  
           { title: "Farmer", icon: "mdi-home-city", link:'/farmer' },
           { title: "Consumer", icon: "mdi-account", link:'/consumer'  },
           { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
@@ -148,9 +149,6 @@ export default {
      return this.$store.getters.user.isAdmin;
     },
     userFull() {
-      console.log('1',process.env.VUE)
-      console.log('2',process.env.VUE_HTTP)
-      console.log('3',process.env.VUE_HOST)
       console.log(this.$store.getters.user)
      return this.$store.getters.user;
     },

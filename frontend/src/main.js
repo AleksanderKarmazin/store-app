@@ -22,8 +22,6 @@ import messagePlagin from './utils/message.plagin'
 import tooltipDirective from './directives/tooltip.directive' 
 
 
-
-
 Vue.config.productionTip = false
 
 Vue.use(Vuelidate)
