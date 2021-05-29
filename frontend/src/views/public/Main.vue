@@ -7,28 +7,14 @@
 </template>
 
 <script>
-// import * as almias from '../../../../public/heavy.svg'
-// import * as almihgas from '../../public/heavy.svg'
-
-import Carousel from '../components/pages/main/Carousel.vue'
-import MainBlock from '../components/pages/main/mainBlock/MainBlock.vue'
-import MainCard from '../components/pages/main/mainCard/MainCard.vue'
+import Carousel from '../../components/pages/main/Carousel.vue'
+import MainBlock from '../../components/pages/main/mainBlock/MainBlock.vue'
+import MainCard from '../../components/pages/main/mainCard/MainCard.vue'
 export default {
   components: { Carousel, MainCard, MainBlock },
 name:'main-page',
 data () {
       return {
-        // items:[
-        //   {
-        //     src: 'https://cdn1.ozone.ru/s3/sellerassets/wc1450_q80/98d71c25-b710-11eb-aeb2-c20a07c8fc3c.jpeg',
-        //   },
-        //   {
-        //     src: 'https://cdn1.ozone.ru/s3/sellerassets/wc1450_q80/c7d85667-b983-11eb-8590-e2f408bd4a06.jpeg',
-        //   },
-        //   {
-        //     src: 'https://cdn1.ozone.ru/s3/sellerassets/wc1450_q80/8e6159bf-a3ff-11eb-9a89-aea27fd94bcf.jpeg',
-        //   },
-        // ],
         cardItems:[
           {
             title: 'Heavy Machine', 
@@ -64,8 +50,6 @@ data () {
 
 <style>
 .main-cards-color{
-  /* background-color: rgb(238, 204, 153); */
-  /* margin: 500px; */
   padding:  50px ;
 
 }

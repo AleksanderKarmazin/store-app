@@ -13,124 +13,64 @@ const routes = [
   {
     path: '/',
     name: 'main',
-    meta:{layout: 'blank-auth'},
-    component: () => import('../views/Main.vue'),
+    meta:{layout: 'blank'},
+    component: () => import('../views/public/Main.vue'),
   },
   {
     path: '/farmer',
     name: 'farmer',
-    meta:{layout: 'blank-auth'},
+    meta:{layout: 'blank'},
     component: () => import('../views/public/farmer/Farmer.vue'),
   },
   {
     path: '/consumer',
     name: 'consumer',
-    meta:{layout: 'blank-auth'},
+    meta:{layout: 'blank'},
     component: () => import('../views/public/Consumer.vue'),
   },
   {
     path: '/product-card/:id',
     name: 'product-card',
-    meta:{layout: 'blank-auth'},
-    component: () => import('../views/ProductCard.vue'),
+    meta:{layout: 'blank'},
+    component: () => import('../views/public/ProductCard.vue'),
+  },
+  {
+    path: '/cart/:id',
+    name: 'product-card',
+    meta:{layout: 'blank'},
+    component: () => import('../views/public/Cart.vue'),
   },
   {
     path: '/supplier',
     name: 'suppliers',
     meta:{layout: 'blank'},
-    component: () => import('../views/Supplier.vue'),
+    component: () => import('../views/public/Supplier.vue'),
     beforeEnter: AuthRouterService
   },
   {
     path: '/home',
     name: 'homePage',
     meta:{layout: 'blank'},
-    component: () => import('../views/HomePage.vue'),
+    component: () => import('../views/public/HomePage.vue'),
     beforeEnter: AuthRouterService
   },
   {
     path: '/login',
     name: 'login',
-    meta:{layout: 'blank-auth'},
-    // component: () => import('../views/Login.vue')
-    component: () => import('../views/auth/Login.vue')
-  }, 
-  {
-    path: '/login2',
-    name: 'login2',
     meta:{layout: 'blank'},
-    component: () => import('../views/auth/LogReg.vue')
+    component: () => import('../views/auth/Login.vue')
   }, 
   {
     path: '/registration',
     name: 'registration',
-    meta:{layout: 'blank-auth'},
+    meta:{layout: 'blank'},
     component: () => import('../views/auth/Registration.vue')
-  },
-  {
-    path: '/catigories',
-    name: 'catigories',
-    meta:{layout: 'main'},
-    component: () => import('../views/Catigories.vue'),
-    //Первый вариант защиты роутов beforeEnter
-    beforeEnter: AuthRouterService
-  },
-
-  {
-    path: '/record',
-    name: 'record',
-    meta:{layout: 'main'},
-    component: () => import('../views/Record.vue'),
-    beforeEnter: AuthRouterService
-    
   },
   {
     path: '/profile',
     name: 'profile',
-    meta:{layout: 'main'},
+    meta:{layout: 'blank'},
     component: () => import('../views/Profile.vue'),
-    beforeEnter: AuthRouterService
-  },
-  {
-    path: '/planning',
-    name: 'planning',
-    meta:{layout: 'main'},
-    component: () => import('../views/Planning.vue'),
-    beforeEnter: AuthRouterService
-  },
-  // {
-  //   path: '/home',
-  //   name: 'home',
-  //   meta:{layout: 'main2'},
-  //   component: () => import('../views/HomePage.vue'),
-  //   beforeEnter: AuthRouterService
-  // },
-  {
-    path: '/history',
-    name: 'history',
-    meta:{layout: 'main'},
-    component: () => import('../views/History.vue'),
-    beforeEnter: AuthRouterService
-  },
-  {
-    path: '/detail-record/:id',
-    name: 'detail-record',
-    meta:{layout: 'main'},
-    component: () => import('../views/Detail-Record.vue'),
-    beforeEnter: AuthRouterService
-  },
-  {
-    path: '/theme',
-    name: 'Theme',
-    meta:{layout: 'main'},
-    component: () => import('../views/Theme.vue'),
-    beforeEnter: AuthRouterService
-  },
-  {
-    path: '/notifications',
-    name: 'Notifications',
-    meta:{layout: 'main'},
-    component: () => import('../views/Notifications.vue'),
     beforeEnter: AuthRouterService
   },
 

@@ -2,14 +2,7 @@ import {
     getConsumer, 
     getConsumerById,
 } from '../services/consumer.service'
-import {  
-     
-    deleteAccountById, 
-    createAccount, 
-    updateAccountById,
-    updateBalanceAccountById
-    
-} from '../services/account.service'
+
 
 export default {
     state: {
