@@ -7,13 +7,22 @@
       <v-row >
         <v-col cols='2'> <AdminMenu></AdminMenu> </v-col>
         <v-col cols='10'>
-             <v-data-table
+        <v-data-table
           :headers="headers"
           :items="desserts"
-          sort-by="calories"
+          sort-by="name"
           class="elevation-1"
+          :search="search"
         >
+
+        
+
           <template v-slot:top>
+            <v-text-field
+              v-model="search"
+              label="Search"
+              class="mx-4"
+            ></v-text-field>
             <v-toolbar flat>
               <v-toolbar-title>List of Products</v-toolbar-title>
               <v-divider class="mx-4" inset vertical></v-divider>
@@ -129,6 +138,9 @@ export default {
   data: () => ({
       dialog: false,
       dialogDelete: false,
+      search: '',
+
+
       headers: [
         {
           text: 'Product`s ID',
@@ -139,7 +151,6 @@ export default {
         { text: 'Name', value: 'name' },
         { text: 'Catigory', value: 'category' },
         { text: 'Price', value: 'price' },
-        // { text: 'Protein (g)', value: 'protein' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       desserts: [],
@@ -164,6 +175,7 @@ export default {
       formTitle () {
         return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
       },
+
     },
 
     watch: {
@@ -176,7 +188,7 @@ export default {
     },
 
     created () {
-      // this.initialize()
+      this.initialize()
       // this.desserts = [
       //     {
       //       _id: 635745568494564352745,
@@ -186,105 +198,35 @@ export default {
       //       protein: 4.0,
       //     },]
 
-      
+      // {
+      // "rating": 4.5,
+      // "countInStock": 10,
+      // "price": 250,
+      // "numReviews": 1,
+      // "_id": "60a89a568d081e4c9085f970",
+      // "name": "Almond",
+      // "image": "/images/seeds/almond.jpg",
+      // "description": "The almond is a species of tree native to Iran and surrounding countries but widely cultivated elsewhere.",
+      // "category": "sample category",
+      // "user": "60a89a568d081e4c9085f96d",
+      // "reviews": [],
+      // "__v": 0,
+      // "createdAt": "2021-05-22T05:44:54.879Z",
+      // "updatedAt": "2021-05-22T05:44:54.879Z"
+      // },
     },
     async mounted() {
-      const res = await this.$store.dispatch("getProduct");
-      console.log("PRODUCTS FROM RES ", res)
-      this.desserts = res
+      // const res = await this.$store.dispatch("getProduct");
+      // console.log("PRODUCTS FROM RES ", res)
+      // this.desserts = res
     }, 
 
 
     methods: {
-      initialize () {
-        this.desserts = [
-          {
-            _id: 635745568494564352745,
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-          },
-          {
-          "rating": 4.5,
-          "countInStock": 10,
-          "price": 250,
-          "numReviews": 1,
-          "_id": "60a89a568d081e4c9085f970",
-          "name": "Almond",
-          "image": "/images/seeds/almond.jpg",
-          "description": "The almond is a species of tree native to Iran and surrounding countries but widely cultivated elsewhere.",
-          "category": "sample category",
-          "user": "60a89a568d081e4c9085f96d",
-          "reviews": [],
-          "__v": 0,
-          "createdAt": "2021-05-22T05:44:54.879Z",
-          "updatedAt": "2021-05-22T05:44:54.879Z"
-          },
-          // {
-          //   name: 'Ice cream sandwich',
-          //   calories: 237,
-          //   fat: 9.0,
-          //   carbs: 37,
-          //   protein: 4.3,
-          // },
-          // {
-          //   name: 'Eclair',
-          //   calories: 262,
-          //   fat: 16.0,
-          //   carbs: 23,
-          //   protein: 6.0,
-          // },
-          // {
-          //   name: 'Cupcake',
-          //   calories: 305,
-          //   fat: 3.7,
-          //   carbs: 67,
-          //   protein: 4.3,
-          // },
-          // {
-          //   name: 'Gingerbread',
-          //   calories: 356,
-          //   fat: 16.0,
-          //   carbs: 49,
-          //   protein: 3.9,
-          // },
-          // {
-          //   name: 'Jelly bean',
-          //   calories: 375,
-          //   fat: 0.0,
-          //   carbs: 94,
-          //   protein: 0.0,
-          // },
-          // {
-          //   name: 'Lollipop',
-          //   calories: 392,
-          //   fat: 0.2,
-          //   carbs: 98,
-          //   protein: 0,
-          // },
-          // {
-          //   name: 'Honeycomb',
-          //   calories: 408,
-          //   fat: 3.2,
-          //   carbs: 87,
-          //   protein: 6.5,
-          // },
-          // {
-          //   name: 'Donut',
-          //   calories: 452,
-          //   fat: 25.0,
-          //   carbs: 51,
-          //   protein: 4.9,
-          // },
-          // {
-          //   name: 'KitKat',
-          //   calories: 518,
-          //   fat: 26.0,
-          //   carbs: 65,
-          //   protein: 7,
-          // },
-        ]
+      async initialize () {
+      const res = await this.$store.dispatch("getProduct");
+      console.log("PRODUCTS FROM RES ", res)
+      this.desserts = res
       },
 
       editItem (item) {
@@ -328,6 +270,13 @@ export default {
         }
         this.close()
       },
+      // For sorting only
+      // filterOnlyCapsText (value, search, item) {
+      //   return value != null &&
+      //     search != null &&
+      //     typeof value === 'string' &&
+      //     value.toString().toLocaleUpperCase().indexOf(search) !== -1
+      // },
     },  
 }
 </script>
