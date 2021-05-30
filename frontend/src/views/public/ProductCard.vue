@@ -1,12 +1,12 @@
 <template>
-  <v-container class="align-center justify-center pa-5 ma-5">
+  <v-container fluid  class="align-center justify-center pa-5 ma-5">
     <v-row
       ><v-btn
         text
         x-large
         class="ma-5"
         color="deep-purple accent-4"
-        @click="$router.push('/consumer')"
+        @click="$router.push('/catalog')"
       >        
       <div class="text-h3">Go back</div> 
       </v-btn>
@@ -16,25 +16,19 @@
         <v-img
           class="white--text align-end ma-10"
           contain
-          height="650"
-          max-height="650"
-          max-width="650"
+
+          max-height="450"
+          max-width="450"
           :src="VUE_BASE_URL + productcard.image"
         >
         </v-img>
       </v-col>
       <v-col class="text-center">
         <v-row> 
-        <div class="text-h3 text-center pa-5">  {{ productcard.prod_name }}</div> 
+        <div class="text-h3 text-center pa-5">  {{ productcard.name }}</div> 
         </v-row>
         <v-row> 
-        <div class="text-h4 text-center pa-5">Seller:  {{ productcard.seller_name }}</div> 
-        </v-row>
-        <v-row> 
-        <div class="text-h4 text-center pa-5">Price:  {{ productcard.price }}</div> 
-        </v-row>
-                <v-row> 
-        <div class="text-h6 text-center pa-5">Avalaible Location:  {{ productcard.avalaible_location }}</div> 
+        <div class="text-h4 text-center pa-5">Price:  {{ productcard.price | currency('USD')}}</div> 
         </v-row>
       </v-col>
       <v-col class="ma-5"> 
@@ -45,7 +39,7 @@
         <div class="text-h4 text-center pa-5">Status: </div> 
         </v-row>
           <v-row> 
-        <div class="text-h6 text-center pa-5"><v-select
+        <div class="text-h6 justify-center pa-5"><v-select
           :items="qty"
           label="Qty"
           @change="selectionChange"
@@ -53,13 +47,14 @@
           item-value="value"
         ></v-select></div> 
         </v-row>
-            <v-card-actions class="justify-center">
+            <v-card-actions 
+            class="justify-start">
             <v-btn
               text
               x-large
               class="ma-5"
               color="deep-purple accent-4"
-              @click="$router.push(`/cart/${productcard._id}?qty=${slectedQty}`)"
+              @click="$router.push(`/cart/${productcard._id}?qty=${slectedQty || 1}`)"
             >
               <h2>Add To Cart</h2>
             </v-btn>
@@ -81,13 +76,13 @@ export default {
     };
   },
   async mounted() {
-    const getConsumerdById = await this.$store.dispatch("getConsumerById", {
+    const getProductdById = await this.$store.dispatch("getProductById", {
       _id: this.$route.params.id,
     });
-    this.productcard = getConsumerdById;
+    this.productcard = getProductdById;
     console.log(this.productcard)
 
-    this.qty = [...Array(this.productcard.quantity).keys()]
+    this.qty = [...Array(this.productcard.countInStock).keys()]
 
     console.log("qty " , this.qty)
 

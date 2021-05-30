@@ -23,10 +23,10 @@ const routes = [
     component: () => import('../views/public/farmer/Farmer.vue'),
   },
   {
-    path: '/consumer',
-    name: 'consumer',
+    path: '/catalog',
+    name: 'Catalog',
     meta:{layout: 'blank'},
-    component: () => import('../views/public/Consumer.vue'),
+    component: () => import('../views/public/Catalog.vue'),
   },
   {
     path: '/product-card/:id',
@@ -36,7 +36,7 @@ const routes = [
   },
   {
     path: '/cart/:id',
-    name: 'product-card',
+    name: 'cart',
     meta:{layout: 'blank'},
     component: () => import('../views/public/Cart.vue'),
   },
@@ -47,6 +47,57 @@ const routes = [
     component: () => import('../views/public/Supplier.vue'),
     beforeEnter: AuthRouterService
   },
+  //ADMIN
+  {
+    path: '/admin',
+    name: 'admin',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/adminPanel.vue'),
+    beforeEnter: AuthRouterService
+  },
+  {
+    path: '/dashbord',
+    name: 'dashbord',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/menu/Dashbord.vue'),
+    beforeEnter: AuthRouterService
+  },
+  {
+    path: '/adminProfile',
+    name: 'adminProfile',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/menu/AdminProfile.vue'),
+    beforeEnter: AuthRouterService
+  },  
+  {
+    path: '/userlist',
+    name: 'userlist',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/menu/UserList.vue'),
+    beforeEnter: AuthRouterService
+  },  
+  {
+    path: '/productlist',
+    name: 'productlist',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/menu/ProductList.vue'),
+    beforeEnter: AuthRouterService
+  },  
+  {
+    path: '/oderlist',
+    name: 'oderlist',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/menu/OderList.vue'),
+    beforeEnter: AuthRouterService
+  },  
+  {
+    path: '/settings',
+    name: 'settings',
+    meta:{layout: 'blank'},
+    component: () => import('../views/admin/menu/Settings.vue'),
+    beforeEnter: AuthRouterService
+  },    
+  //ADMIN 
   {
     path: '/home',
     name: 'homePage',

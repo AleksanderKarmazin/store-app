@@ -24,12 +24,12 @@
         class="logo-size-d"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
-      <v-btn text color="rgba(0,0,0,0)" x-large to="/farmer" class="white--text"> <h4>Farmer</h4> </v-btn>
-      <v-btn text color="rgba(0,0,0,0)" x-large to="/consumer" class="white--text"> <h4>Consumer</h4> </v-btn>
-      <v-btn text color="rgba(0,0,0,0)" x-large to="/supplier" class="white--text"> <h4>Supplier</h4> </v-btn>
+      <!-- <v-btn text color="rgba(0,0,0,0)" x-large to="/farmer" class="white--text"> <h4>Farmer</h4> </v-btn> -->
+      <v-btn text color="rgba(0,0,0,0)" x-large to="/catalog" class="white--text"> <h4>CATALOG</h4> </v-btn>
+      <!-- <v-btn text color="rgba(0,0,0,0)" x-large to="/supplier" class="white--text"> <h4>Supplier</h4> </v-btn> -->
       <v-spacer></v-spacer>
       <v-toolbar-items>
-                <v-btn text v-if="user && admin">
+                <v-btn text v-if="user && admin" to="/admin">
           <v-badge :content="messages" :value="messages" color="blue" overlap>
             <v-icon x-large left>admin_panel_settings</v-icon></v-badge
           >
@@ -124,7 +124,7 @@ export default {
           { title: "My Account", icon: "mdi-account", link:'/1'  },
           { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },  
           { title: "Farmer", icon: "mdi-home-city", link:'/farmer' },
-          { title: "Consumer", icon: "mdi-account", link:'/consumer'  },
+          { title: "Catalog", icon: "mdi-account", link:'/catalog'  },
           { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
           { title: "Home", icon: "mdi-home-city", link:'/1' },
           { title: "My Account", icon: "mdi-account", link:'/1'  },
