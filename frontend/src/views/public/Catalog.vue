@@ -33,7 +33,7 @@
         </v-card-subtitle> -->
         <!-- <v-card-text class="text--primary text-center">
           <div>Location: {{card.avalaible_location}}</div>
-        </v-card-text> -->
+        </v-card-text> -->    
         <v-card-actions class="justify-center">
            <v-btn text x-large class="ma-5" color="deep-purple accent-4" 
            @click="$router.push('/product-card/' + card._id)"
