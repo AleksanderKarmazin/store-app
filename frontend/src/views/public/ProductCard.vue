@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid  class="align-center justify-center pa-5 ma-5">
+  <v-container   class="align-center justify-center pa-15 ma-15">
     <v-row
       ><v-btn
         text
@@ -10,8 +10,8 @@
       >        
       <div class="text-h3">Go back</div> 
       </v-btn>
-    </v-row>
-    <v-row class="align-center justify-center">
+      </v-row>
+      <v-row class="align-center justify-center">
       <v-col>
         <v-img
           class="white--text align-end ma-10"
@@ -29,6 +29,9 @@
         </v-row>
         <v-row> 
         <div class="text-h4 text-center pa-5">Price:  {{ productcard.price | currency('USD')}}</div> 
+        </v-row>
+        <v-row> 
+        <div class="text-h6 text-start pa-5"> Description:  {{ productcard.description }}</div> 
         </v-row>
       </v-col>
       <v-col class="ma-5"> 
@@ -60,6 +63,57 @@
             </v-btn>
           </v-card-actions>
           </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4">
+        <v-card 
+          max-width="700"
+          min-height="400"
+        >
+        <v-row><div class="text-h4 pa-5 ma-5">Write a Customer Review</div></v-row>
+        <v-row><v-select 
+          class="px-5 mx-5"
+          :items="qty"
+          label="Rating"
+          @change="selectionChange"
+          :v-model="slectedQty"
+          item-value="value"
+        ></v-select></v-row>
+        <v-row>
+          <v-textarea 
+          class="pa-5 ma-5"
+          outlined
+          name="input-7-4"
+          label="Comment"
+        ></v-textarea>
+        </v-row>
+        <v-row><v-card-actions 
+            class="justify-start">
+            <v-btn
+              text
+              x-large
+              class="ma-5"
+              color="deep-purple accent-4"
+              @click="$router.push(`/cart/${productcard._id}?qty=${slectedQty || 1}`)"
+            >
+              <h4>SUBMIT</h4>
+            </v-btn>
+          </v-card-actions></v-row>
+        </v-card>
+      </v-col>
+      <v-col cols="8">
+        <v-row class="text-h3 text-center py-15 px-5 mx-10">Reviews</v-row>
+        <v-row 
+        v-for="(rew, i) in productcard.reviews" :key="i"
+        class="text-h6 text-center  px-5 mx-5"
+        > <v-col>
+          <v-row>{{rew.name}}</v-row>
+          <v-row>{{rew.rating}}</v-row>
+          <v-row>{{rew.updatedAt | date('date')}}</v-row>
+          <v-row>{{rew.comment}}</v-row>
+          </v-col>
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>

@@ -14,12 +14,7 @@
           class="elevation-1"
           :search="search"
           :options = options
-
-
         >
-
-        
-
           <template v-slot:top>
             <v-text-field
               v-model="search"
