@@ -145,9 +145,6 @@ export default {
       options: {
         itemsPerPage: 5,
       },
-
-
-
       headers: [
         {
           text: 'Product`s ID',
