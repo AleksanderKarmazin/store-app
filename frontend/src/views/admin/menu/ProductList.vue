@@ -13,6 +13,9 @@
           sort-by="name"
           class="elevation-1"
           :search="search"
+          :options = options
+
+
         >
 
         
@@ -139,6 +142,10 @@ export default {
       dialog: false,
       dialogDelete: false,
       search: '',
+      options: {
+        itemsPerPage: 5,
+      },
+
 
 
       headers: [
@@ -189,36 +196,9 @@ export default {
 
     created () {
       this.initialize()
-      // this.desserts = [
-      //     {
-      //       _id: 635745568494564352745,
-      //       calories: 159,
-      //       fat: 6.0,
-      //       carbs: 24,
-      //       protein: 4.0,
-      //     },]
-
-      // {
-      // "rating": 4.5,
-      // "countInStock": 10,
-      // "price": 250,
-      // "numReviews": 1,
-      // "_id": "60a89a568d081e4c9085f970",
-      // "name": "Almond",
-      // "image": "/images/seeds/almond.jpg",
-      // "description": "The almond is a species of tree native to Iran and surrounding countries but widely cultivated elsewhere.",
-      // "category": "sample category",
-      // "user": "60a89a568d081e4c9085f96d",
-      // "reviews": [],
-      // "__v": 0,
-      // "createdAt": "2021-05-22T05:44:54.879Z",
-      // "updatedAt": "2021-05-22T05:44:54.879Z"
-      // },
     },
     async mounted() {
-      // const res = await this.$store.dispatch("getProduct");
-      // console.log("PRODUCTS FROM RES ", res)
-      // this.desserts = res
+
     }, 
 
 
