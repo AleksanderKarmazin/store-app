@@ -137,11 +137,12 @@ export default {
           sortable: false,
           value: '_id',
         },
-        { text: 'Name', value: 'calories' },
-        { text: 'Email', value: 'fat' },
-        { text: 'Admin', value: 'carbs' },
-        // { text: 'Protein (g)', value: 'protein' },
-        { text: 'Actions', value: 'actions', sortable: false },
+        { text: 'Name', value: 'name' },
+        { text: 'Email', value: 'email' },
+        { text: 'Admin', value: 'isAdmin'},
+        { text: 'Created', value: 'createdAt' },
+        { text: 'Updated', value: 'updatedAt' },
+        { text: 'Actions', value: 'actions', sortable: false }
       ],
       desserts: [],
       editedIndex: -1,
@@ -177,17 +178,7 @@ export default {
     },
 
     created () {
-      // this.initialize()
-      this.desserts = [
-          {
-            _id: 635745568494564352745,
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-          },]
-
-      
+      this.initialize() 
     },
     mounted() {
       
@@ -195,79 +186,10 @@ export default {
 
 
     methods: {
-      initialize () {
-        this.desserts = [
-          {
-            _id: 635745568494564352745,
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-          },
-          // {
-          //   name: 'Ice cream sandwich',
-          //   calories: 237,
-          //   fat: 9.0,
-          //   carbs: 37,
-          //   protein: 4.3,
-          // },
-          // {
-          //   name: 'Eclair',
-          //   calories: 262,
-          //   fat: 16.0,
-          //   carbs: 23,
-          //   protein: 6.0,
-          // },
-          // {
-          //   name: 'Cupcake',
-          //   calories: 305,
-          //   fat: 3.7,
-          //   carbs: 67,
-          //   protein: 4.3,
-          // },
-          // {
-          //   name: 'Gingerbread',
-          //   calories: 356,
-          //   fat: 16.0,
-          //   carbs: 49,
-          //   protein: 3.9,
-          // },
-          // {
-          //   name: 'Jelly bean',
-          //   calories: 375,
-          //   fat: 0.0,
-          //   carbs: 94,
-          //   protein: 0.0,
-          // },
-          // {
-          //   name: 'Lollipop',
-          //   calories: 392,
-          //   fat: 0.2,
-          //   carbs: 98,
-          //   protein: 0,
-          // },
-          // {
-          //   name: 'Honeycomb',
-          //   calories: 408,
-          //   fat: 3.2,
-          //   carbs: 87,
-          //   protein: 6.5,
-          // },
-          // {
-          //   name: 'Donut',
-          //   calories: 452,
-          //   fat: 25.0,
-          //   carbs: 51,
-          //   protein: 4.9,
-          // },
-          // {
-          //   name: 'KitKat',
-          //   calories: 518,
-          //   fat: 26.0,
-          //   carbs: 65,
-          //   protein: 7,
-          // },
-        ]
+      async initialize () {
+      const res = await this.$store.dispatch("getUsers");
+      console.log("USERS FROM RES ", res)
+      this.desserts = res
       },
 
       editItem (item) {
