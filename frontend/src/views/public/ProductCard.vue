@@ -73,10 +73,10 @@
         <v-row><div class="text-h4 pa-5 ma-5">Write a Customer Review</div></v-row>
         <v-row><v-select 
           class="px-5 mx-5"
-          :items="qty"
+          :items="ratingValues"
           label="Rating"
-          @change="selectionChange"
-          :v-model="slectedQty"
+          @change="ratingOnChange"
+          :v-model="slectedRating"
           item-value="value"
         ></v-select></v-row>
         <v-row>
@@ -126,7 +126,16 @@ export default {
       productcard: [],
       VUE_BASE_URL: "http://localhost:5000/uploads",
       qty:[],
-      slectedQty: undefined 
+      slectedQty: undefined,
+      ratingValues: [                                         
+                '1 - Poor',
+                '2 - Fair',
+                '3 - Good',
+                '4 - Very Good',
+                '5 - Excellent'
+      ],
+      slectedRating: undefined
+
     };
   },
   async mounted() {
@@ -146,6 +155,10 @@ export default {
     selectionChange(e){
       this.slectedQty = e
         console.log('slectedQty', this.slectedQty )
+    },
+    ratingOnChange(e){
+      this.slectedRating = e
+        console.log('slectedRating', this.slectedRating )
     }
   },
 };
