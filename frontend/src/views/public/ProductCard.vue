@@ -145,13 +145,14 @@ export default {
     this.productcard = getProductdById;
     console.log(this.productcard)
 
-    this.qty = [...Array(this.productcard.countInStock).keys()]
+    this.qty = [...Array(this.productcard.countInStock).keys()].map(x=> x + 1)
 
     console.log("qty " , this.qty)
 
 
 
-  }, methods: {
+  }, 
+  methods: {
     selectionChange(e){
       this.slectedQty = e
         console.log('slectedQty', this.slectedQty )

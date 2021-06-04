@@ -24,35 +24,28 @@
         class="logo-size-d"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
-      <!-- <v-btn text color="rgba(0,0,0,0)" x-large to="/farmer" class="white--text"> <h4>Farmer</h4> </v-btn> -->
       <v-btn text color="rgba(0,0,0,0)" x-large to="/catalog" class="white--text"> <h4>CATALOG</h4> </v-btn>
-      <!-- <v-btn text color="rgba(0,0,0,0)" x-large to="/supplier" class="white--text"> <h4>Supplier</h4> </v-btn> -->
       <v-spacer></v-spacer>
       <v-toolbar-items>
-                <v-btn text v-if="user && admin" to="/admin">
+        <v-btn text v-if="user && admin" to="/admin" class="px-10">
           <v-badge :content="messages" :value="messages" color="blue" overlap>
             <v-icon x-large left>admin_panel_settings</v-icon></v-badge
           >
           <h3>admin panel</h3>
         </v-btn>
-        <v-btn icon text v-if="user">
-          <v-badge :content="messages" :value="messages" color="red" overlap>
-            <v-icon>email</v-icon></v-badge
+        <v-btn icon text @click="(messages = 23), (show = true)" v-if="user" to="/cart/:id" class="px-10">
+          <v-badge :content="messages" :value="messages" color="green" overlap>
+            <v-icon large >shopping_cart</v-icon></v-badge
           >
         </v-btn>
-        <v-btn icon text @click="(messages = 23), (show = true)" v-if="user">
+        <v-btn icon text @click="(messages = 0), (show = false)" v-if="user" class="px-10">
           <v-badge :content="messages" :value="messages" color="green" overlap>
-            <v-icon>shopping_cart</v-icon></v-badge
+            <v-icon large>mdi-heart</v-icon></v-badge
           >
         </v-btn>
-        <v-btn icon text @click="(messages = 0), (show = false)" v-if="user">
+        <v-btn icon text @click="messages = 0" v-if="user" class="px-10">
           <v-badge :content="messages" :value="messages" color="green" overlap>
-            <v-icon>mdi-heart</v-icon></v-badge
-          >
-        </v-btn>
-        <v-btn icon text @click="messages = 0" v-if="user">
-          <v-badge :content="messages" :value="messages" color="green" overlap>
-            <v-icon>notifications</v-icon></v-badge
+            <v-icon large>notifications</v-icon></v-badge
           >
         </v-btn>
       </v-toolbar-items>
