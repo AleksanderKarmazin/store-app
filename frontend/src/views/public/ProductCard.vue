@@ -57,7 +57,7 @@
               x-large
               class="ma-5"
               color="deep-purple accent-4"
-              @click="$router.push(`/cart/${productcard._id}?qty=${slectedQty || 1}`)"
+              @click="addToCart"
             >
               <h2>Add To Cart</h2>
             </v-btn>
@@ -94,7 +94,7 @@
               x-large
               class="ma-5"
               color="deep-purple accent-4"
-              @click="$router.push(`/cart/${productcard._id}?qty=${slectedQty || 1}`)"
+              @click="$router.push(`/cart/${productcard._id}?qty=${slectedQty || 1}`), addToCart"
             >
               <h4>SUBMIT</h4>
             </v-btn>
@@ -160,7 +160,14 @@ export default {
     ratingOnChange(e){
       this.slectedRating = e
         console.log('slectedRating', this.slectedRating )
+    },
+    async addToCart(){
+      const getProductdById = await this.$store.dispatch("addToCart", {
+      _id: this.$route.params.id,
+    })
+      this.$router.push(`/cart/${this.$route.params.id}?qty=${this.slectedQty || 1}`)
     }
+
   },
 };
 </script>
