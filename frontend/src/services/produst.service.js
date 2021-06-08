@@ -8,7 +8,7 @@ const getProductById = (params) => request({ url: `api/seeds/` + `${params._id}`
 const deleteProductById = (params) => request({ url: `api/seeds/`+`${params._id}`, method: 'delete'});
 const updateProductById = (data, params) => request({ url: `api/seeds/`+`${params._id}`, method: 'put', data});
 
-  
+    
 export { 
       getProduct, 
       getProductById, 
