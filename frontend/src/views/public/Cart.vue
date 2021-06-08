@@ -4,16 +4,16 @@
         <v-col cols="1"></v-col>
         <v-col cols="8"> 
           <v-row class="text-h3 mb-15"> Shopping Cart</v-row>
-          <v-row v-for="(p, idx) in product" :key="idx">
+          <v-row v-for="(p, idx) in products" :key="idx">
             <v-col>
               <v-img
-          class="white--text align-end ma-2"
-          contain
-          max-height="170"
-          max-width="170"
-          :src="VUE_BASE_URL + p.image"
-        >
-        </v-img>
+                    class="white--text align-end ma-2"
+                    contain
+                    max-height="170"
+                    max-width="170"
+                    :src="VUE_BASE_URL + p.image"
+                  >
+                  </v-img>
               
             </v-col>
             <v-col><router-link :to="'/product-card/' + p._id">
@@ -122,9 +122,13 @@ export default {
     deleteFromeCart(id){
       this.$store.dispatch("deleteFromCart", id);
     },
+  },
+  computed: {
+        products () {
+            return this.$store.getters.getCartItems
+        }
+    },
 
-
-  }
   
 
 }

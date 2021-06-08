@@ -127,7 +127,7 @@ export default {
           { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
       ],
       messages: 0,
-      badge: this.$store.getters.getCartItems.length,
+      // badge: this.$store.getters.getCartItems.length,
       show: false,
     };
   },
@@ -146,6 +146,10 @@ export default {
       console.log(this.$store.getters.user)
      return this.$store.getters.user;
     },
+    badge() {
+     return this.$store.getters.getCartItems.length;
+    }
+
 
   },
   methods: {},
