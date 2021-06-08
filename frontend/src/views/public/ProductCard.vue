@@ -159,7 +159,6 @@ export default {
     },
     ratingOnChange(e){
       this.slectedRating = e
-        console.log('slectedRating', this.slectedRating )
     },
     async addToCart(){
       const getProductdById = await this.$store.dispatch("addToCart", {

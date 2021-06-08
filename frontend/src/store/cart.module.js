@@ -1,15 +1,10 @@
 import {  
-    getProduct, 
     getProductById, 
-    deleteProductById, 
-    createProduct, 
-    updateProductById,
 } from '../services/produst.service'
 const cartItemsFromStorege = JSON.parse(localStorage.getItem('cartItems'));
     const cartItems = cartItemsFromStorege 
     ?  cartItemsFromStorege
     :  [] ;
-
 
 export default {
     state: {
@@ -33,9 +28,6 @@ export default {
         removeCartItem (state, payload) {
             const filtredArrCartItems = state.cartItems.filter(x => x._id !== payload)
             state.cartItems = filtredArrCartItems
-            console.log("pld",payload );
-            console.log("filtredArrCartItems",filtredArrCartItems);
-
             // for( var i = 0; i < state.cartItems.length; i++){ 
             //     // console.log(state.cartItems[i]._id);
             //     if ( state.cartItems[i]._id === payload) { 
@@ -49,7 +41,6 @@ export default {
             try {
             const ProductById = await getProductById({_id})
             commit('addCartItem', ProductById)
-            console.log("BEFORE ADDING TO STOREGE - getters.getCartItems", getters.getCartItems );
             localStorage.setItem('cartItems', JSON.stringify(getters.getCartItems))
             const fromStorege = localStorage.getItem('cartItems')
             console.log("AFTER ADDING TO STOREGE", fromStorege );  
@@ -61,7 +52,6 @@ export default {
                 throw error;
             }
 
-        
         }, 
         async deleteFromCart({commit, getters}, _id) {
             try {
@@ -75,35 +65,6 @@ export default {
                 
                 throw error;
             }
-        },
-        async updateUserById({commit, dispatch}, {
-            _id,
-            account_currency,
-            current_balance,
-            financial_goal
-            }) {
-            try {
-                commit('clearError')
-                commit('clearInfo')
-                commit('setLoading', true)
-                const UserById = await updateUserById({
-                    account_currency,
-                    current_balance,
-                    financial_goal
-                },{_id})
-                  console.log('Product by ID from request was updated', UserById);
-
-                dispatch('getUsers')
-                commit('setLoading', false)
-                return UserById;
-            } catch (error) {
-                commit('setError', error.response.data.message)
-                commit('setLoading', false)
-                console.log('err', error.response.data.message)
-                console.log('err', error.response.data.stack)
-                throw error;
-            }
-        },
-        
+        }, 
     }
 };
