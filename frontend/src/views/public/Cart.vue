@@ -48,7 +48,7 @@
                              <v-btn
               icon
               color="deep-purple accent-4"
-              @click="count++"
+              @click="deleteFromeCart(p._id)"
             >
               <v-icon>delete</v-icon>
             </v-btn>
@@ -106,7 +106,7 @@ export default {
     console.log("productQty", this.productQty )
     const res = await this.$store.dispatch("getProduct");
     console.log("res Product Catalog", res);
-    const product = this.$store.getters.getProduct;
+    const product = this.$store.getters.getCartItems;
     this.product = product;
     console.log("store", this.product);
     
@@ -118,6 +118,9 @@ export default {
     selectionChange(e){
       this.slectedQty = e
         console.log('slectedQty', this.slectedQty )
+    },
+    deleteFromeCart(id){
+      this.$store.dispatch("deleteFromCart", id);
     },
 
 

@@ -33,12 +33,12 @@
           >
           <h3>admin panel</h3>
         </v-btn>
-        <v-btn icon text @click="(messages = 23), (show = true)" v-if="user" to="/cart/:id" class="px-10">
-          <v-badge :content="messages" :value="messages" color="green" overlap>
+        <v-btn icon text  v-if="user" to="/cart/:id" class="px-10">
+          <v-badge :content="badge" :value="badge" color="green" overlap>
             <v-icon large >shopping_cart</v-icon></v-badge
           >
         </v-btn>
-        <v-btn icon text @click="(messages = 0), (show = false)" v-if="user" class="px-10">
+        <v-btn icon text @click="show = false" v-if="user" class="px-10">
           <v-badge :content="messages" :value="messages" color="green" overlap>
             <v-icon large>mdi-heart</v-icon></v-badge
           >
@@ -127,6 +127,7 @@ export default {
           { title: "Users", icon: "mdi-account-group-outline", link:'/1'  },
       ],
       messages: 0,
+      badge: this.$store.getters.getCartItems.length,
       show: false,
     };
   },
